@@ -1,0 +1,17 @@
+{
+    "type" : "python",
+    "args" : {
+        "source": "/usr/share/pyshared/yandex/dummy"
+    },
+    "engine" : {
+        "heartbeat-timeout" : 60,
+        "pool-limit" : 100,
+        "queue-limit" : 250
+    },
+    "tasks" : {
+        "hash" : {
+            "endpoint" : "tcp://*:9105",
+            "type" : "native-server"
+        }
+    }
+}
