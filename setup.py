@@ -8,7 +8,7 @@ setup(
     version = "0.0.1-4",
     description = "Yandex Dummy",
     long_description = "Yandex Dummy Application",
-    url = "https://hg.yandex-team.ru/dummy",
+    url = "https://git.yandex.ru/kobolog/yandex-dummy.git",
     author = "Andrey Sibiryov",
     author_email = "me@kobology.ru",
     license = "Proprietary",
