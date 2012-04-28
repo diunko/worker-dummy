@@ -10,7 +10,6 @@
     },
     "tasks" : {
         "hash" : {
-            "endpoint" : "tcp://*:9105",
             "type" : "native-server"
         }
     }
