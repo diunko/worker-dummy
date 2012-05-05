@@ -1,3 +1,9 @@
+yandex-dummy (0.0.5) lucid; urgency=low
+
+  * Drop explicit endpoints in the manifest.
+
+ -- Andrey Sibiryov <kobolog@yandex-team.ru>  Fri, 04 May 2012 17:42:25 +0400
+
 yandex-dummy (0.0.4) lucid; urgency=low
 
   * Revert.
