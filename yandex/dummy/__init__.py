@@ -1,12 +1,22 @@
 # coding: utf-8
 
 from cocaine.context import Log
-from cocaine.decorators import native
+from cocaine.decorators import simple
 
 from hashlib import sha512
 
 log = Log()
 
-@native
+@simple
 def hash(meta, request):
-    return sha512(str(request)).hexdigest()
+    for i in xrange(int(request['n'])):
+        request = sha512(str(request)).hexdigest()
+
+    return request
+
+def hash_body(io):
+    io.read()
+    io.write(io.read())
+
+def loop(io):
+    pass

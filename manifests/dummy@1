@@ -1,16 +1,22 @@
 {
     "type" : "python",
-    "args" : {
-        "source": "/usr/share/pyshared/yandex/dummy"
-    },
     "engine" : {
         "heartbeat-timeout" : 60,
-        "pool-limit" : 100,
-        "queue-limit" : 250
+        "pool-limit" : 200,
+        "queue-limit" : 250,
+        "grow-threshold": 1
     },
-    "tasks" : {
+    "drivers" : {
+        "io" : {
+            "type" : "blastbeat",
+            "emit": "hash",
+            "identity": "cocaine-node-1",
+            "endpoint": "tcp://elisto20f.dev.yandex.net:5001"
+        },
         "hash" : {
-            "type" : "native-server"
+            "type" : "native-server",
+            "emit": "hash",
+            "endpoint": "tcp://*:9567"
         }
     }
 }
