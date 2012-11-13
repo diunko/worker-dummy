@@ -1,22 +1,30 @@
 # coding: utf-8
 
-from cocaine.context import Log
-from cocaine.decorators import simple
+from cocaine.context import Log, Dispatch
+from cocaine.http import http
 
 from hashlib import sha512
 
 log = Log()
+dispatch = Dispatch()
 
-@simple
-def hash(meta, request):
-    for i in xrange(int(request['n'])):
-        request = sha512(str(request)).hexdigest()
+@http
+def hash(request, response):
+    def process():
+        result = "<html><head>Hash</head>%s</html>" % sha512(str(request.headers)).hexdigest()
+        
+        response.writeHead(200, {
+            'Content-Type': 'text/plain'
+        })
+        
+        response.write(result)
+        response.close()
 
-    return request
+    request.on("request", process)
+    request.on("body", lambda chunk: pass)
 
-def hash_body(io):
-    io.read()
-    io.write(io.read())
+def loop(request, response):
+    response.close()
 
-def loop(io):
-    pass
+dispatch.on("hash", hash)
+dispatch.on("loop", loop)

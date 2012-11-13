@@ -9,14 +9,24 @@
     "drivers" : {
         "io" : {
             "type" : "blastbeat",
-            "emit": "hash",
-            "identity": "cocaine-node-1",
-            "endpoint": "tcp://elisto20f.dev.yandex.net:5001"
+            "args": {
+                "emit": "hash",
+                "identity": "cocaine-node-1",
+                "endpoint": "tcp://idioteque.dev.yandex.net:5001"
+            }
         },
         "hash" : {
             "type" : "native-server",
-            "emit": "hash",
-            "endpoint": "tcp://*:9567"
+            "args": {
+                "emit": "hash"
+            }
+        },
+        "loop": {
+            "type": "recurring-timer",
+            "args": {
+                "emit": "loop",
+                "interval": 10000
+            }
         }
     }
 }
