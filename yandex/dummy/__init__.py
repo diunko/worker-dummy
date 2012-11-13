@@ -1,8 +1,10 @@
 # coding: utf-8
 
 from cocaine.context import Log, Dispatch
+
 from cocaine.http import http
 from cocaine.timers import timer
+from cocaine.fs import fs
 
 from hashlib import sha512
 
@@ -10,7 +12,7 @@ log = Log()
 dispatch = Dispatch()
 
 @http
-def hash(request, response):
+def hash_headers(request, response):
     def process():
         result = "<html><head>Hash</head>%s</html>\r\n" % sha512(str(request.headers)).hexdigest()
         
@@ -24,8 +26,13 @@ def hash(request, response):
     request.on("request", process)
 
 @timer
-def loop():
+def idle():
     pass
 
-dispatch.on("hash", hash)
-dispatch.on("loop", loop)
+@fs
+def check_file(stats):
+    log.info("%s" % stats)
+
+dispatch.on("hash", hash_headers)
+dispatch.on("loop", idle)
+dispatch.on("fs", check_file)

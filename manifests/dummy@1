@@ -27,6 +27,13 @@
                 "emit": "loop",
                 "interval": 10000
             }
+        },
+        "fs": {
+            "type": "filesystem-monitor",
+            "args": {
+                "emit": "fs",
+                "path": "/tmp/dummy-file"
+            }
         }
     }
 }
