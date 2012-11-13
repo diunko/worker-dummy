@@ -2,6 +2,7 @@
 
 from cocaine.context import Log, Dispatch
 from cocaine.http import http
+from cocaine.timers import timer
 
 from hashlib import sha512
 
@@ -11,7 +12,7 @@ dispatch = Dispatch()
 @http
 def hash(request, response):
     def process():
-        result = "<html><head>Hash</head>%s</html>" % sha512(str(request.headers)).hexdigest()
+        result = "<html><head>Hash</head>%s</html>\r\n" % sha512(str(request.headers)).hexdigest()
         
         response.writeHead(200, {
             'Content-Type': 'text/plain'
@@ -21,10 +22,10 @@ def hash(request, response):
         response.close()
 
     request.on("request", process)
-    request.on("body", lambda chunk: pass)
 
-def loop(request, response):
-    response.close()
+@timer
+def loop():
+    pass
 
 dispatch.on("hash", hash)
 dispatch.on("loop", loop)
