@@ -1,0 +1,12 @@
+name: dummy
+description: dummy request hasher
+type: python
+depends:
+  - msgpack-python
+drivers:
+  io:
+      type: blastbeat
+      emit: get
+      identity: cocaine-node-0
+      endpoint: tcp://localhost:5951
+
