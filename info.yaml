@@ -8,6 +8,5 @@ drivers:
       type: blastbeat
       args:
         emit: get
-        identity: cocaine-node-0
-        endpoint: tcp://localhost:5951
+        endpoint: tcp://dealer01g.dev.yandex.net:5432
 
