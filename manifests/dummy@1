@@ -28,6 +28,12 @@
                 "emit": "fs",
                 "path": "/tmp/dummy-file"
             }
+        },
+        "zmq": {
+            "type": "zeromq-server",
+            "args": {
+                "emit": "echo"
+            }
         }
     }
 }

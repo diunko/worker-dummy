@@ -1,6 +1,7 @@
 # coding: utf-8
 
-from cocaine.context import Log, Dispatch
+from cocaine.context import Dispatch
+from cocaine.service import Logging
 
 from cocaine.http import http
 from cocaine.timers import timer
@@ -8,7 +9,7 @@ from cocaine.fs import fs
 
 from hashlib import sha512
 
-log = Log()
+log = Logging("dummy-app")
 dispatch = Dispatch()
 
 @http
@@ -25,6 +26,16 @@ def hash_headers(request, response):
 
     request.on("request", process)
 
+def reverse_echo(request, response):
+    def process(chunk):
+        response.write('-'.join(reversed(chunk)))
+
+    def close():
+        log.info("Done!")
+
+    request.on("chunk", process)
+    request.on("close", close)
+
 @timer
 def idle():
     pass
@@ -36,3 +47,4 @@ def check_file(stats):
 dispatch.on("hash", hash_headers)
 dispatch.on("loop", idle)
 dispatch.on("fs", check_file)
+dispatch.on("echo", reverse_echo)
