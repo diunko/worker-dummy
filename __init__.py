@@ -1,7 +1,6 @@
 # coding: utf-8
 
-from cocaine.context import Dispatch
-from cocaine.service import Logging
+from cocaine.context import Dispatch, Log
 
 from cocaine.http import http
 from cocaine.timers import timer
@@ -9,7 +8,7 @@ from cocaine.fs import fs
 
 from hashlib import sha512
 
-log = Logging("dummy-app")
+log = Log()
 dispatch = Dispatch()
 
 @http

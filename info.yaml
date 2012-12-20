@@ -7,6 +7,6 @@ drivers:
   io:
       type: blastbeat
       args:
-        emit: get
+        emit: hash
         endpoint: tcp://dealer01g.dev.yandex.net:5432
 
