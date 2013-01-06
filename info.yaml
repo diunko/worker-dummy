@@ -1,7 +1,7 @@
 name: dummy1
 description: dummy1 request hasher
 type: python
-slave: /home/diunko/tmp/no-cocaine/worker.js
+slave: /tmp/w.sh
 depends:
   - msgpack-python
 drivers:
