@@ -1,6 +1,6 @@
 {
     "type" : "python",
-    "slave" : "/usr/bin/cocaine-worker-nodejs",
+    "slave" : "/home/diunko/tmp/no-cocaine/worker.js
     "drivers" : {
         "io" : {
             "type" : "blastbeat",
