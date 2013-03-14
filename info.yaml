@@ -1,13 +1,9 @@
-name: dummy1
-description: dummy1 request hasher
+name: node
+description: dummy app 
 type: python
-slave: /usr/bin/cocaine-worker-nodejs
-depends:
-  - msgpack-python
 drivers:
-  io:
-      type: blastbeat
+  main:
+      type: native-server
       args:
         emit: hash
-        endpoint: tcp://dealer01g.dev.yandex.net:5432
 
