@@ -5,7 +5,7 @@ depends:
 type: python
 #slave: /home/diunko/dvl/no-cocaine/worker.js
 drivers:
-  main:
+  dummy:
       type: native-server
       args:
         emit: hash
