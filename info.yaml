@@ -3,9 +3,9 @@ description: nodejs dummy app
 depends:
   - msgpack-python
 type: python
-#slave: /home/diunko/dvl/no-cocaine/worker.js
+slave: /home/diunko/dvl/no-cocaine/worker.js
 drivers:
-  dummy:
+  main:
       type: native-server
       args:
         emit: hash
